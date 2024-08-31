@@ -17,17 +17,22 @@ export default function Shirt() {
     )
   )
 
+
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
+
+  const stateString = JSON.stringify(snap);
   return (
-    <group>
+    <group 
+    key={stateString}
+    >
       <mesh
         castShadow
         geometry={nodes.T_Shirt_male.geometry}
         material={materials.lambert1}
         material-roughness={1}
         dispose={null}
-      ></mesh>
+      >
 
       {
         snap.isFullTexture && (
@@ -45,12 +50,15 @@ export default function Shirt() {
           rotation={[0,0,0]}
           scale={0.15}
           map={logoTexture}
-          map-anisotropy={16}
+          anisotropy={16}
+          // map-anisotropy={16}
           depthTest={false}
           depthWrite={true}
           />
         )
       }
+
+      </mesh>
     </group>
   );
 }
