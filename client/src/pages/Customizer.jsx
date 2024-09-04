@@ -71,7 +71,15 @@ const Customizer = () => {
         state.isFullTexture = false;
         break;
     }
-
+    // after setting the state, activeFilterTab is updated
+    setActiveFilterTab((prevState) => {
+      return {
+        ...prevState,
+        [tabName]: !prevState[tabName]
+      }
+    })
+    
+  }
   return (
     <AnimatePresence>
       {!snap.intro && (
@@ -114,8 +122,8 @@ const Customizer = () => {
                 key={tab.name}
                 tab={tab}
                 isFilter
-                isActiveTab=""
-                handleClick={() => {}}
+                isActiveTab={activeFilterTab[tab.name]}
+                handleClick={() => handleActiveFilterTab(tab.name)}
               />
             ))}
           </motion.div>
