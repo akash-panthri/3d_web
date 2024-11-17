@@ -5,7 +5,7 @@ import cors from 'cors'
 import dalleRoutes from './routes/dalle.routes.js';
 
 dotenv.config()
-
+const PORT = process.env.PORT || 8000;
 const app = express()
 
 app.use(cors())
@@ -20,4 +20,4 @@ app.get('/',(req,res)=>{
 })
 
 
-app.listen(1024, ()=>console.log("Server started "))
+app.listen(PORT, ()=>console.log("Server started "))
